@@ -8,13 +8,29 @@
  * determinando las dimensiones de la misma.
  */
 
-init([
-	64,4,64,32,16,
-	64,8,16,2,32,
-	2,4,64,64,2,
-	2,4,32,16,4,
-	16,4,16,16,16,
-	16,64,2,32,32,
-	64,2,64,32,64,
-	32,2,64,32,4
-], 5).
+ init(Grid, 5) :-
+    length(Grid, 40), % 8 filas x 5 columnas = 40 elementos en total
+    randomizeGrid(Grid).
+
+/**
+ * randomizeGrid(+Grid).
+ * 
+ * Predicado que genera una rejilla aleatoria con potencias de 2 menores a 64.
+ * Grid es la lista que representa la rejilla y se modifica con valores aleatorios.
+ */
+
+randomizeGrid([]).
+randomizeGrid([X | Grid]) :-
+    randomPowerOfTwo(X),
+    randomizeGrid(Grid).
+
+/**
+ * randomPowerOfTwo(-Num).
+ * 
+ * Predicado que genera un número aleatorio que es una potencia de 2 menor a 64.
+ * Num es el número generado.
+ */
+
+randomPowerOfTwo(Num) :-
+    random_between(1, 6, Exp), % Genera un exponente aleatorio de 1 a 6 (correspondiente a las potencias de 2 menores a 64)
+    Num is 2 ^ Exp.
