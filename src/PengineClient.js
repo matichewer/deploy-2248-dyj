@@ -22,7 +22,7 @@ class PengineClient {
         this.query = this.query.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
         this.pengine = new window.Pengine({
-            server: "http://localhost:3030/pengine",
+            server: "https://2248-dyj.duckdns.org/pengine",
             application: "proylcc",
             oncreate: PengineClient.handleCreate,
             onsuccess: this.handleSuccess,
