@@ -4,7 +4,7 @@ import Board from './Board';
 import { joinResult } from './util';
 
 let pengine;
-//Commit comment IGNORE
+
 function Game() {
 
   // State
