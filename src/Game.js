@@ -27,10 +27,8 @@ function Game() {
     const queryS = 'init(Grid, NumOfColumns)';
     pengine.query(queryS, (success, response) => {
       if (success) {
-        const grid = response['Grid'];
-        const numOfColumns = response['NumOfColumns'];
-        setGrid(grid);
-        setNumOfColumns(numOfColumns);
+        setGrid(response['Grid']);
+        setNumOfColumns(response['NumOfColumns']);
       }
     });
   }
