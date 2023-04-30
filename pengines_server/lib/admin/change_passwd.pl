@@ -52,10 +52,10 @@ check_passwd(File) :-
 check_passwd(File) :-
 	print_message(warning, pengine(no_admin_passwd)),
 	nl(user_output),
-	%	ask('Username (default: "admin")? ', User, admin),
-	%	ask('Password (will be ECHOED)? ', Passwd, _),
-    User =  ['a','d','m','i','n','1','3','1','3'],
-    Passwd = "matute",
+%	ask('Username (default: "admin")? ', User, admin),
+%	ask('Password (will be ECHOED)? ', Passwd, _),
+    	User =  ['a','d','m','i','n'],
+    	Passwd = 'matute',
 	atom_codes(UserAtom, User),
 	change_passwd(File, UserAtom, Passwd).
 
