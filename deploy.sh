@@ -2,7 +2,7 @@
 
 echo "ACTUALIZANDO REACT"
 cd /home/wecher/Git/deploy-2248-dyj
-npm run build
+/usr/local/bin/npm run build
 
 
 echo "ACTUALIZANDO PROLOG"
