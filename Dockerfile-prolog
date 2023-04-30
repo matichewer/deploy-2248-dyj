@@ -6,6 +6,8 @@ COPY pengines_server /pengines_server
 # Establecer el directorio de trabajo
 WORKDIR /pengines_server
 
+ENV PE_CONF=/pengines_config/pengines.conf
+
 # Ejecutar el servidor de Prolog
 ENTRYPOINT ["swipl", "run.pl"]
 
