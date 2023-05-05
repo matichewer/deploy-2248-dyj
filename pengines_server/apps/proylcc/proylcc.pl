@@ -15,7 +15,7 @@
 % Predicado para obtener un elemento de la grilla dado las coordenadas
 get_element(Grid, NumOfColumns, X, Y, Element) :- % X=columnas, Y=filas
     % Calculamos el índice correspondiente a las coordenadas
-    Index is Y * NumOfColumns + X,
+    Index is (X * NumOfColumns) + Y,
     % Obtenemos el elemento en el índice calculado
     nth0(Index, Grid, Element).
 
@@ -40,18 +40,18 @@ replace(List, Index, Element, Result) :-
 % Predicado para reemplazar un elemento de la grilla dado las coordenadas
 replace_element(Grid, NumOfColumns, X, Y, NewElement, RGrid) :-
 	% Calculamos el índice correspondiente a las coordenadas
-	Index is Y * NumOfColumns + X,
+	Index is X * NumOfColumns + Y,
 	% Reemplazamos el elemento en el índice calculado
 	replace(Grid, Index, NewElement, RGrid).
 
 % Predicado para reemplazar múltiples elementos de la grilla
 replace_elements(Grid, NumOfColumns, [], Grid). % Caso base: no hay más elementos para reemplazar
-replace_elements(Grid, NumOfColumns, [(X, Y, NewElement) | Rest], RGrid) :-
+replace_elements(Grid, NumOfColumns, [[X, Y, NewElement] | Rest], RGrid) :-
 	replace_element(Grid, NumOfColumns, X, Y, NewElement, TempGrid),
 	replace_elements(TempGrid, NumOfColumns, Rest, RGrid).
 
 % Predicado principal para reemplazar el último elemento del Path con la próxima potencia de 2
-replace_last_with_next_power(Grid, NumOfColumns, Path, RGrid) :-
+replace_last_with_next_power(Grid, NumOfColumns, Path, [RGrid]) :-
     sum_grid_elements(Grid, Path, NumOfColumns, Sum),
     next_power_of_two(Sum, NextPower),
     last(Path, [X, Y]), % Obtener las coordenadas del último par ordenado en Path

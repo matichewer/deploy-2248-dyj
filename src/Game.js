@@ -74,6 +74,7 @@ function Game() {
       if (success) {
         setScore(score + joinResult(path, grid, numOfColumns));
         setPath([]);
+        console.log(response['RGrids']);
         animateEffect(response['RGrids']);
       } else {
         setWaiting(false);
