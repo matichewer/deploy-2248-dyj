@@ -116,3 +116,13 @@ join(Grid, NumOfColumns, Path, RGrids) :-
 	append([], [Grid1], Tmp1),
     append(Tmp1, [Grid2], Tmp2),
     append(Tmp2, [Grid3], RGrids).
+
+/**
+ * to_generate(+Grid, +NumOfColumns, +Path, -RGrids) 
+ * Este predicado calculará la potencia resultante que se esté por generar en todo momento según Path, se llamará
+ * en todo momento que el path cambie, desde el front-end
+ */ 
+
+to_generate(Grid, NumOfColumns, Path, ToGenerate):-
+    sum_grid_elements(Grid, Path, NumOfColumns, Sum),
+    next_power_of_two(Sum, ToGenerate).
