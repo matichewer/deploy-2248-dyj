@@ -1,6 +1,6 @@
 :- module(init, [ init/2 ]).
 
-/**
+/** Commit Juani.
  * init(-Grid, -NumOfColumns).
  * 
  * Predicado especificando la grilla inicial, que será mostrada al comienzo del juego, donde
