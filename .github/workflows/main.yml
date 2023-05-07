@@ -3,7 +3,7 @@ name: Deploy on Raspberry Pi
 on:
   push:
     branches:
-      - 2248Func
+      - develop
 
 jobs:
   build-and-push-prolog:
