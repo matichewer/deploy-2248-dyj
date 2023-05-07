@@ -92,7 +92,7 @@ function Game() {
     if (restRGrids.length > 0) {
       setTimeout(() => {
         animateEffect(restRGrids);
-      }, 200);
+      }, 100);
     } else {
       setWaiting(false);
     }
