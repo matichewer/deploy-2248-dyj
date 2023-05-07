@@ -2,6 +2,7 @@
 
 echo "ACTUALIZANDO REACT"
 cd /home/wecher/Git/deploy-2248-dyj
+git pull
 /usr/local/bin/npm run build
 
 
