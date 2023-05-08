@@ -34,7 +34,9 @@ body {
 }
 
 .square {
-  display: flex;
+  position: relative;
+  z-index: 100;
+  display: grid;
   align-items: center;
   justify-content: center;
   margin: 5px;
@@ -43,6 +45,20 @@ body {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
+}
+
+.toGenerate{
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 25px;
+  padding: 10px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .rise {

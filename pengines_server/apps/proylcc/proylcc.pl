@@ -13,7 +13,8 @@
 		divide_grid/3,
 		move_zeros/2,
 		apply_gravity/2,
-		join/4
+		join/4,
+        to_generate/4.
 	]).
 
 :- use_module(library(clpfd)).
@@ -123,6 +124,8 @@ join(Grid, NumOfColumns, Path, RGrids) :-
  * en todo momento que el path cambie, desde el front-end
  */ 
 
+to_generate(Grid, NumOfColumns, [], ToGenerate) :-
+    ToGenerate is 0.
 to_generate(Grid, NumOfColumns, Path, ToGenerate):-
     sum_grid_elements(Grid, Path, NumOfColumns, Sum),
     next_power_of_two(Sum, ToGenerate).
