@@ -102,7 +102,7 @@ apply_gravity(Grid, RGrid) :-
 	transpose(RColumnsFixed, FixedGrid),
     flatten(FixedGrid, RGrid).
 
-add_list(Lista1, Lista2, [Lista1, Lista2]).
+
 
 /**
  * join(+Grid, +NumOfColumns, +Path, -RGrids) 
