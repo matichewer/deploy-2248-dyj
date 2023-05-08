@@ -9,9 +9,9 @@ export function numberToColor(num) {
         case 128: return "#488A7A";
         case 256: return "#5BE1C0";
         case 512: return "#E12765";
-        case 1024: return "#AD1346";
-        case 2048: return "#CD8C21";
-        default: return "black";
+        case 1024: return "#42D919";
+        case 2048: return "#FC376F";
+        default: return "FC376F";
     }
 }
 
