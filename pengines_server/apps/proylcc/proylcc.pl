@@ -39,6 +39,9 @@ get_element(Grid, NumOfColumns, X, Y, Element) :- % X=columnas, Y=filas
     nth0(Index, Grid, Element).
 
 % Predicado para sumar los elementos de la grilla Grid según los pares ordenados de Path
+to_generate(Grid, NumOfColumns, [], ToGenerate) :-
+    ToGenerate is 0.
+
 sum_grid_elements(Grid, Path, NumOfColumns, Sum) :-
     sum_grid_elements(Grid, Path, 0, NumOfColumns, Sum).
 

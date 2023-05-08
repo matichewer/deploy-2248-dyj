@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PengineClient from './PengineClient';
 import Board from './Board';
 import { joinResult } from './util';
+import ToGenerate from './ToGenerate';
 
 let pengine;
 
@@ -13,7 +14,7 @@ function Game() {
   const [score, setScore] = useState(0);
   const [path, setPath] = useState([]);
   const [waiting, setWaiting] = useState(false);
-
+  const [toGenerate, setToGenerate] = useState(0);
   useEffect(() => {
     // This is executed just once, after the first render.
     PengineClient.init(onServerReady);
@@ -41,8 +42,25 @@ function Game() {
     if (waiting) {
       return;
     }
-    setPath(newPath);
-    console.log(JSON.stringify(newPath));
+    if (newPath.length > 0 ){
+      const gridS = JSON.stringify(grid);
+      const pathS = JSON.stringify(newPath);
+      const queryS = "to_generate(" + gridS + "," + numOfColumns + "," + pathS + ",ToGenerate)";
+      pengine.query(queryS, (success, response) => {
+        if (success) {
+          setToGenerate(response.ToGenerate);
+          console.log(response);
+        } else {
+          setWaiting(false);
+        }
+      });
+    }
+    else{
+      setToGenerate(0);
+    }    
+
+    setPath(newPath);    
+    console.log(JSON.stringify(newPath));    
   }
 
   /**
@@ -66,6 +84,7 @@ function Game() {
           RGrids
         ).
     */
+    setToGenerate(0);
     const gridS = JSON.stringify(grid);
     const pathS = JSON.stringify(path);
     const queryS = "join(" + gridS + "," + numOfColumns + "," + pathS + ", RGrids)";
@@ -105,6 +124,9 @@ function Game() {
     <div className="game">
       <div className="header">
         <div className="score">{score}</div>
+        <ToGenerate 
+          value={toGenerate} 
+        >{toGenerate}</ToGenerate>
       </div>
       <Board
         grid={grid}
@@ -113,6 +135,7 @@ function Game() {
         onPathChange={onPathChange}
         onDone={onPathDone}
       />
+      <button className="square">Bootser Colapsar</button>
     </div>
   );
 }
