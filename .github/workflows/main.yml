@@ -31,6 +31,8 @@ jobs:
           tags: matichewer/2248-dyj-prolog:latest
 
   deploy:
+    needs: 
+      - build-and-push-prolog
     runs-on: ubuntu-latest
     steps:
       - name: Call endpoint
