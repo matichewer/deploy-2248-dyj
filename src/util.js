@@ -11,7 +11,7 @@ export function numberToColor(num) {
         case 512: return "#E12765";
         case 1024: return "#42D919";
         case 2048: return "#FC376F";
-        default: return "FC376F";
+        default: return "gold";
     }
 }
 
