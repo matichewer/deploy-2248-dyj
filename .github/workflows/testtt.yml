@@ -1,4 +1,4 @@
-name: Webhook
+name: Test-webhook
 
 on:
   push:
