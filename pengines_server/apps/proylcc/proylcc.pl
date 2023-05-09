@@ -14,7 +14,7 @@
 		move_zeros/2,
 		apply_gravity/2,
 		join/4,
-        to_generate/4.
+        to_generate/4
 	]).
 
 :- use_module(library(clpfd)).
