@@ -25,3 +25,4 @@ docker rm 2248-dyj
 # Run a new container with the updated image
 docker run -d -it -p 3031:3030 --name "2248-dyj" matichewer/2248-dyj-prolog:latest
 
+ 
