@@ -14,7 +14,7 @@
 		move_zeros/2,
 		apply_gravity/2,
 		join/4,
-        to_generate/4.
+        to_generate/4
 	]).
 
 :- use_module(library(clpfd)).
@@ -129,3 +129,11 @@ to_generate(Grid, NumOfColumns, [], ToGenerate) :-
 to_generate(Grid, NumOfColumns, Path, ToGenerate):-
     sum_grid_elements(Grid, Path, NumOfColumns, Sum),
     next_power_of_two(Sum, ToGenerate).
+
+/**
+ * booster_colapse(+Grid, +NumOfColumns, -RGrids) 
+ * **** A IMPLEMENTAR **** este predicado eliminará todos los grupos de números adyacentes reemplazando en el elemento
+ * más abajo a la derecha (mayor índice) de cada grupo, por la potencia de 2 mayor o igual a la sumatoria de todos los numeros del grupo
+ */ 
+
+booster_colapse(Grid, NumOfColumns, RGrid).
