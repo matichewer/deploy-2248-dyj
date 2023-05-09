@@ -29,13 +29,21 @@ jobs:
           platforms: linux/arm/v7
           push: true
           tags: matichewer/2248-dyj-prolog:latest
-  
+
   deploy:
-    needs: 
-      - build-and-push-prolog
     runs-on: ubuntu-latest
     steps:
-      - name: Send webhook to Raspberry
-        uses: wei/curl@v1.1.1
-        with:
-          args: -u ${{secrets.RASPI_USERNAME}}:${{secrets.RASPI_PASS}} https://chewer.ddns.net/hooks/deploy-2248-dyj
+      - name: Call endpoint
+        run: curl -u ${{secrets.RASPI_USERNAME}}:${{secrets.RASPI_PASS}} https://chewer.ddns.net/hooks/deploy-2248-dyj
+      
+#  deploy:
+#    needs: 
+#      - build-and-push-prolog
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Send webhook to Raspberry
+#        uses: wei/curl@v1.1.1
+#        with:
+#          args: -u ${{secrets.RASPI_USERNAME}}:${{secrets.RASPI_PASS}} https://chewer.ddns.net/hooks/deploy-2248-dyj
+
+
