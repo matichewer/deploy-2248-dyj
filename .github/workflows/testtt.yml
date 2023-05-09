@@ -1,0 +1,13 @@
+name: Webhook
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  call_webhook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Call Chewer endpoint
+      run: curl -u ${{secrets.RASPI_USERNAME}}:${{secrets.RASPI_PASS}} https://chewer.ddns.net/hooks/test
