@@ -12,7 +12,7 @@
 		replace_path/4,
 		divide_grid/3,
 		move_zeros/2,
-		apply_gravity/2,
+		apply_gravity/3,
 		join/4,
         to_generate/4
 	]).
@@ -95,8 +95,8 @@ move_zeros([Column|Columns], [MovedColumn|MovedColumns]) :-
     move_zeros(Columns, MovedColumns).
 
 % aplica la gravedad a la grilla y devuelve la grilla resultante
-apply_gravity(Grid, RGrid) :-
-    divide_grid(5, Grid, RColumns),
+apply_gravity(Grid, NumOfColumns, RGrid) :-
+    divide_grid(NumOfColumns, Grid, RColumns),
 	transpose(RColumns, Transposed),
     move_zeros(Transposed, RColumnsFixed),
 	transpose(RColumnsFixed, FixedGrid),
@@ -112,7 +112,7 @@ apply_gravity(Grid, RGrid) :-
 
 join(Grid, NumOfColumns, Path, RGrids) :-
     replace_path(Grid, NumOfColumns, Path, Grid1),
-    apply_gravity(Grid1, Grid2),
+    apply_gravity(Grid1, NumOfColumns, Grid2),
 	replace_zeros_grid(Grid2, Grid3),
 	append([], [Grid1], Tmp1),
     append(Tmp1, [Grid2], Tmp2),
@@ -124,8 +124,7 @@ join(Grid, NumOfColumns, Path, RGrids) :-
  * en todo momento que el path cambie, desde el front-end
  */ 
 
-to_generate(Grid, NumOfColumns, [], ToGenerate) :-
-    ToGenerate is 0.
+to_generate(Grid, NumOfColumns, [], ToGenerate) .
 to_generate(Grid, NumOfColumns, Path, ToGenerate):-
     sum_grid_elements(Grid, Path, NumOfColumns, Sum),
     next_power_of_two(Sum, ToGenerate).
